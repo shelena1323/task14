@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 $title = 'Главная';
         require "blocks/header1.php";
 ?>

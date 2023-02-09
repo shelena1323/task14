@@ -1,36 +1,29 @@
 <?php 
 /*
 $users = [
-    ['login' => 'Irina', 'password' => sha1('123456')],
-    ['login' => 'Elena', 'password' => sha1('qwe123')],
-    ['login' => 'David', 'password' => sha1('qwerty')],
-    ['login' => 'Diana', 'password' => sha1('778899')],
-    ['login' => 'Sasha', 'password' => sha1('147852')],
-    ['login' => 'Jenya', 'password' => sha1('369852')],
+    ['login' => 'Irina', 'password' => md5('123456')],
+    ['login' => 'Elena', 'password' => md5('qwe123')],
+    ['login' => 'David', 'password' => md5('qwerty')],
+    ['login' => 'Diana', 'password' => md5('778899')],
+    ['login' => 'Sasha', 'password' => md5('147852')],
+    ['login' => 'Jenya', 'password' => md5('zxcasd')],
+    ['login' => 'Anton', 'password' => md5('111111')],
+    ['login' => 'Anna', 'password' => md5('1515asd')],
 ];
 */
-$mysql = new mysqli("Localhost", "mysql", "mysql");
-if (!$mysql) {
-    die("Ошибка: " . mysqli_connect_error());
-  } 
+session_start();
+$login = trim($_POST['login']);
+$password = trim(md5($_POST['password']));
+$pass = trim(md5($_POST['pass']));
 
-$sql = "CREATE DATABASE task14";
-if(mysqli_query($mysql, $sql)){
-    echo "База данных успешно создана";
-} else{
-    echo "Ошибка: " . mysqli_error($conn);
+if ($password===$pass){
+    $mysql = new mysqli('Localhost', 'root', '', 'task14');
+    $mysql->query("INSERT INTO `usbd` (`login`, `password`)VALUES('$login', '$password')");
+    $_SESSION['message'] = 'Регистрация прошла успешно! Зайдите в ЛК';
+    header('Location: login.php');
+} else {
+    $_SESSION['message'] = 'Пароли не совпадают';
+    header('Location: registry.php');
+    exit;
 }
-
-
-
-
-
-function getUsersList(){   
-    global  $users;
-    return $users;
-}
-
-$users->close();
-header('Location: login.php');
-exit;
 ?>

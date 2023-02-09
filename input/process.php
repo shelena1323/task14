@@ -1,17 +1,11 @@
-<?php 
+<?php
+session_start();
 // getUsersList() возвращает массив всех пользователей и хэшей их паролей;
 //existsUser($login) проверяет, существует ли пользователь с указанным логином;
 // checkPassword($login, $password) пусть возвращает true тогда, когда существует пользователь с указанным логином и введенный им пароль прошел проверку, иначе — false;
 //getCurrentUser() которая возвращает либо имя вошедшего на сайт пользователя, либо null
- 
+
 include 'users.php';
-
-$username = $_POST['login'] ?? null;
-$password = $_POST['password'] ?? null;
-
-
-    
-
 
 if (null !== $username || null !== $password) {
     if ($password === $users['admin']['password']) {
@@ -27,6 +21,8 @@ if ($auth) {
     header('Location: ../index.php');
     exit;
 }
+
+$mysql->close();
 //header('Location: login.php');
 //exit;
 ?>

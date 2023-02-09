@@ -48,6 +48,10 @@ article img {
 #promo {
     background-color: rgba(245, 94, 96, 0.714);
 }
+.alert {
+    width: 300px;
+    text-align:center;
+}
 footer{
     text-align:center;    
     left:0px;

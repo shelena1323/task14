@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 $title = 'Вход в ЛК';
 require "..\blocks\header3.php";
 ?>
@@ -20,10 +21,11 @@ require "..\blocks\header3.php";
     </div>
     </form>
 
-    <?php 
-    
-
-
+    <?php
+    if(isset($_SESSION['message'])){
+        echo '<div class="alert alert-success" role="alert" align="center">'. $_SESSION['message'] . '</div>';
+    }
+    unset($_SESSION['message']);
     ?>
 
     <br>
