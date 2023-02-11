@@ -48,9 +48,13 @@ article img {
 #promo {
     background-color: rgba(245, 94, 96, 0.714);
 }
-.alert {
+#alert {
     width: 300px;
+    margin: auto;
     text-align:center;
+}
+#birthday{
+    width: 300px;
 }
 footer{
     text-align:center;    
@@ -65,7 +69,7 @@ margin-bottom: 50px;
 }
 footer .links > a {
 color: #3d8835;
-padding: 0 25px;
+padding: 0 20px;
 font-size: 13px;
 letter-spacing: .1rem;
 text-decoration: none;

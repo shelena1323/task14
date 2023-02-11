@@ -20,17 +20,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="promo.php"> <span class="sr-only">(current)</span>Акции</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="promo.php">Акции</a>
+        <a class="nav-link" href="#">Наш номер: 8-800-000-01-01</a>
       </li>         
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Наш номер: 8-800-000-01-01</a>
+        <a class="nav-link disabled" href="#">Добро пожаловать, <?php echo $_SESSION['name']?>!</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0"> 
-    <a href="./index.php" class="btn btn-success" role="button" aria-pressed="true">Выйти</a> 
+    <a href="./input/logout.php" class="btn btn-success" role="button" aria-pressed="true">Выйти</a> 
     </form>
   </div>
 </nav>

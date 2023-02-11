@@ -1,7 +1,22 @@
 <?php
 session_start();
 $title = 'Главная';
-        require "blocks/header1.php";
+if(($_SESSION['name']?? '') === ''){
+    require "blocks/header1.php";
+} else {
+    setcookie("cookLog", $_SESSION['name'], time()+432000);
+    if(isset($_COOKIE["cookLog"])){
+        setcookie("cookPromo", true, time()+86400);
+        
+    }
+    require "blocks/header2.php";
+}
+
+$d=date('d-m-Y H:i', $_SESSION['time']);
+$nowT=time()-$_SESSION['time'];
+$endH=floor((86400-$nowT)/(60*60));
+$endM = floor((86400-$nowT-$endH*60*60)/60);
+$endS=floor(86400-$nowT-$endH*60*60 - $endM*60);
 ?>
 
 <div class="row">
@@ -36,6 +51,29 @@ $title = 'Главная';
   </div>
 </div>
 
+<br>
+<br>
+<?php
+if(isset($_SESSION['name'])){
+    include "blocks/hi.php";
+}
+
+if(isset($_POST['birthday'])){
+    $birthday = strtotime($_POST['birthday']);
+    $diff = abs($birthday - time());
+    $months = floor($diff / (30*60*60*24));
+    $days = floor(($diff - $months*30*60*60*24)/ (60*60*24));
+    $hours = floor(($diff - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+    $end_date = "$months мес. $days д. $hours ч.";
+    if(($months && $days && $hours)===0){
+        echo "<h4> Поздравляем с Днем рождения!</h4>";
+        include 'blocks/ad3.php';
+    } else {
+        echo "<h4>До вашего дня рождения $end_date</h4>";
+    }
+}
+
+?>
 <br>
 
 <h1 align="center">О салоне</h1>

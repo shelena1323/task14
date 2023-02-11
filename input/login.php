@@ -17,7 +17,6 @@ require "..\blocks\header3.php";
         <p>       
         <button type="submit" class="btn btn-info">Войти</button>
         </p>
-        <p> Впервые у нас? <a href="registry.php" class="btn btn-outline-danger btn-sm" role="button" aria-pressed="true">Регистрация</a></p>
     </div>
     </form>
 
@@ -25,7 +24,7 @@ require "..\blocks\header3.php";
     if(isset($_SESSION['message'])){
         echo '<div class="alert alert-success" role="alert" align="center">'. $_SESSION['message'] . '</div>';
     }
-    unset($_SESSION['message']);
+        unset($_SESSION['message']);
     ?>
 
     <br>
